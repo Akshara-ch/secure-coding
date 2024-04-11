@@ -19,19 +19,17 @@ System.out.println("Just connected to "
 OutputStream outToServer = client.getOutputStream(); 
 DataOutputStream out = new DataOutputStream(outToServer); 
 pstr = Integer.toString(p); 
-out.writeUTF(pstr); // Sending p 
+out.writeUTF(pstr); 
 gstr = Integer.toString(g); 
-out.writeUTF(gstr); // Sending g 
-double A = ((Math.pow(g, a)) % p); // calculation of A 
+out.writeUTF(gstr); 
+double A = ((Math.pow(g, a)) % p); 
 Astr = Double.toString(A); 
-out.writeUTF(Astr); // Sending A 
-// Client's Private Key 
+out.writeUTF(Astr); 
 System.out.println("From Client : Private Key = " + a); 
-// Accepts the data 
 DataInputStream in = new DataInputStream(client.getInputStream()); 
 serverB = Double.parseDouble(in.readUTF()); 
 System.out.println("From Server : Public Key = " + serverB); 
-Adash = ((Math.pow(serverB, a)) % p); // calculation of Adash 
+Adash = ((Math.pow(serverB, a)) % p); 
 System.out.println("Secret Key to perform Symmetric Encryption = "
 + Adash); 
 client.close(); 
